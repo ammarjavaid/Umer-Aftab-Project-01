@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
-const Card = ({ image, location, name, onClick }) => {
+const Card = ({ image, location, name, onClick ,ban }) => {
 
     const [bans, setBans] = useState(true);
     // const [banUser, setBanUser] = useState('');
-    const [id, setId] = useState('');
+//     const [id, setId] = useState('');
 
     const check = () => {
         setBans(false)
@@ -47,7 +47,7 @@ const Card = ({ image, location, name, onClick }) => {
 
     return (
         <>
-            <div className='one' onClick={onClick}>
+            <div className='one'>
                 <div className='left'>
                     <div className='pic'>
                         <img src={image} alt='' />
@@ -58,15 +58,15 @@ const Card = ({ image, location, name, onClick }) => {
                     </div>
                 </div>
                 <div className='right'>
-                    {/* {ban ? <div className='ban' onClick={check}><button> Ban </button></div>
+                     {ban ? <div className='ban' onClick={onClick}><button> Ban </button></div>
                         :
-                        <div className='unban' onClick={checkOne}><button> Unban </button></div>
-                    } */}
+                        <div className='unban' onClick={onClick}><button> Unban </button></div>
+                    } 
                     
-                    {bans ? <div className='ban' onClick={check}> <input type="submit" value="Ban" onChange={(e) => setBans(e.target.value)}/> </div>
-                        :
-                        <div className='unban' onClick={checkOne}> <input type="submit" value="Unban" onChange={(e) => setBans(e.target.value)}/> </div>
-                    }
+//                     {bans ? <div className='ban' onClick={check}> <input type="submit" value="Ban" onChange={(e) => setBans(e.target.value)}/> </div>
+//                         :
+//                         <div className='unban' onClick={checkOne}> <input type="submit" value="Unban" onChange={(e) => setBans(e.target.value)}/> </div>
+//                     }
 
                 </div>
             </div>
