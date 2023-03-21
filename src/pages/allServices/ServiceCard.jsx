@@ -49,11 +49,12 @@ const ServiceCard = ({ img, title, desc, price, id }) => {
                     {/* <!-- Modal content--> */}
                     <div className="modal-content">
                         <div className="modal-header">
-                            <p> {modalData.id} </p>
+                            {/* <p> {modalData.id} </p> */}
                             <button type="button" className="close" data-dismiss="modal">&times;</button>
                             <h4 className="modal-title"> {modalData.title} </h4>
                         </div>
                         <div className="modal-body">
+                            <img src={img} alt="" />
                             <p>{ modalData.desc }</p>
                             <p> ${modalData.price} </p>
                         </div>

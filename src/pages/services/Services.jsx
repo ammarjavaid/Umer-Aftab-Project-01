@@ -31,7 +31,7 @@ const Services = () => {
                         <button className="sub__btn"> Create </button>
                     </div>
 
-                    <div className='box'>
+                    <div className='box__sub-category'>
                         <div className='one__box'>
                             <h3 style={{ fontWeight: "bold", paddingBottom: "10px" }}> Dell </h3>
                             <h4> Television (TV), the electronic delivery of moving images and sound from a source to a receiver.</h4>

@@ -10,26 +10,27 @@ import { db } from '../../Firebase';
 const FAQ = () => {
 
   const [open, setOpen] = useState(false)
-  const [posts, setPosts] = useState([]);
+  const [myAds, setMyAds] = useState([]);
 
   const handle = () => {
     setOpen(!open)
   }
 
   useEffect(() => {
-    console.log(posts)
+    console.log(myAds)
   }, [])
 
-  const getCollectionRef = collection(db, "Post");
+  const getCollectionRef = collection(db, "Ads");
   useEffect(() => {
     const unsubscribe = onSnapshot(getCollectionRef, snapshot => (
-      setPosts(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
+      setMyAds(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
     ))
     return () => {
+      console.log(unsubscribe)
       unsubscribe();
       // console.log(unsubscribe());
     }
-  });
+  }, []);
 
   return (
     <>
@@ -40,8 +41,8 @@ const FAQ = () => {
           <h1> Approve Ads </h1>
           <div className='approve'>
             {
-              posts.map((item) => (
-                <AdCard img={item.images[0]} title={item.Title} desc={item.Description} postType={item.PostType} id={item.id}/>
+              myAds.map((item) => (
+                <AdCard img={item.AdGraphicLink} type={item.MediaType} title={item.Adtype} price={item.ads} id={item.UserID}/>
               ))
             }
           </div>

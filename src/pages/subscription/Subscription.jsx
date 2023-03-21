@@ -23,8 +23,8 @@ const Subscription = () => {
     if (days === '' && price === '') {
       return
     }
-    const movieCollRef = collection(db, 'Subscription')
-    addDoc(movieCollRef, { days, price })
+    const subCollRef = collection(db, 'Subscription')
+    addDoc(subCollRef, { days, price })
       .then((response) => {
         console.log(response)
         toast.success(`You are Subscribed ${days} days and price is ${price}`, {
@@ -49,7 +49,7 @@ const Subscription = () => {
     console.log(posts)
   }, [])
 
-  const getCollectionRef = collection(db, "Post");
+  const getCollectionRef = collection(db, "Subscription");
   useEffect(() => {
     const unsubscribe = onSnapshot(getCollectionRef, snapshot => (
       setPosts(snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })))
@@ -61,7 +61,7 @@ const Subscription = () => {
   });
 
   function deletePost(id) {
-    const docRef = doc(db, 'Post', id)
+    const docRef = doc(db, 'Subscription', id)
     deleteDoc(docRef)
       .then(() => {
         console.log('Document Deleated')
@@ -101,8 +101,8 @@ const Subscription = () => {
                     <>
                       <div className='one__box'>
                         <div className='left'>
-                          <h2> Condition:  <span> {item.Condition} </span> </h2>
-                          <h2> Price:  <span> {item.Price} </span> </h2>
+                          <h2> Days:  <span> {item.days} </span> </h2>
+                          <h2> Price:  <span> {item.price} </span> </h2>
                         </div>
                         <div className='right'>
                           <button onClick={() => deletePost(item.id)}> <BsFillTrashFill /> Delete </button>

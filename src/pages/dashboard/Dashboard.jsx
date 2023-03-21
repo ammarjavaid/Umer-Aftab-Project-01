@@ -51,7 +51,9 @@ const Dashboard = () => {
             {
               allUser.map((curElm) => (
                 <>
-                  <Card image={curElm.data.image} location={curElm.data.location} name={curElm.data.name} />
+                  <Card image={curElm.data.image} location={curElm.data.location} name={curElm.data.name} onClick={()=> {
+                    console.log(curElm.data)
+                  }}/>
                 </>
               ))
             }
