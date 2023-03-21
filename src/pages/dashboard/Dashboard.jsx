@@ -12,11 +12,28 @@ const Dashboard = () => {
 
   const [open, setOpen] = useState(false)
   const [allUser, setAllUser] = useState([]);
+  const [ban, setban] = useState(false);
 
   const handle = () => {
     setOpen(!open)
   }
+  
+  
 
+
+      const check = (id) => {
+      setban(!ban)
+        const docRef = doc(db, 'User', id)
+        updateDoc(docRef, { ban:ban })
+            .then(() => {
+                console.log("yes!!")
+           
+            }).catch(error => {
+                console.log(error.message)
+            })
+    }
+  
+  
   useEffect(()=>{
     getUsers();
 }, [])
@@ -51,9 +68,7 @@ const Dashboard = () => {
             {
               allUser.map((curElm) => (
                 <>
-                  <Card image={curElm.data.image} location={curElm.data.location} name={curElm.data.name} onClick={()=> {
-                    console.log(curElm.data)
-                  }}/>
+                  <Card image={curElm.data.image} location={curElm.data.location} ban={ban} name={curElm.data.name} onClick={check(curElm.data.UserID)}/>
                 </>
               ))
             }
