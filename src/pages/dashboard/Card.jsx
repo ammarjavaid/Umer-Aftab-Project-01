@@ -9,21 +9,11 @@ const Card = ({ image, location, name, onClick ,ban }) => {
     // const [banUser, setBanUser] = useState('');
 //     const [id, setId] = useState('');
 
-    const check = () => {
-        setBans(false)
-        const docRef = doc(db, 'User', id)
-        updateDoc(docRef, { bans })
-            .then(() => {
-                console.log("yes!!")
-                setBans(false)
-            }).catch(error => {
-                console.log(error.message)
-            })
-    }
 
-    const checkOne = () => {
-        setBans(true)
-    }
+
+//     const checkOne = () => {
+//         setBans(true)
+//     }
 
     // const handleSubmit = (e)=>{
     //    const docRef = doc(db, 'Buttons' )
