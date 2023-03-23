@@ -15,7 +15,6 @@ const Forget = () => {
                 </div>
 
                 <div className='btn__login'><button> Send OPT code </button></div>
-                {/* <p style={{ paddingTop: "1rem" }}> <Link to="/forget"> Forget Password? </Link> </p> */}
                 <p> Already have an account? <Link to="/">Login</Link>  </p>
             </form>
     </>

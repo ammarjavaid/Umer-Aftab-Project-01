@@ -1,16 +1,14 @@
 import React from 'react'
 import "./sidebar.scss"
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import LocalTaxiIcon from '@mui/icons-material/LocalTaxi';
 import LocalAtmIcon from '@mui/icons-material/LocalAtm';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
-import { BsCreditCard2Front, BsQuestion, BsQuestionCircle, BsTrophy } from 'react-icons/bs';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import PaymentIcon from '@mui/icons-material/Payment';
 import DesignServicesIcon from '@mui/icons-material/DesignServices';
 import { Link, useNavigate } from 'react-router-dom';
+import { GoReport } from "react-icons/go";
 import { getAuth, signOut } from "firebase/auth";
 
 const Sidebar = ({open, setOpen, handle}) => {
@@ -41,7 +39,8 @@ const logout = ()=>{
                     <Link className='link' to="/category" onClick={handle}><li> <LocalAtmIcon style={{fontSize: "17px"}}/> <span> Category </span>  </li></Link>
                     <Link className='link' to="/sub-category" onClick={handle}><li> <LightbulbIcon style={{fontSize: "17px"}}/> <span> Sub Category </span>  </li></Link>
                     <Link className='link' to="/approve" onClick={handle}><li> <LiveHelpIcon style={{fontSize: "17px"}}/> <span> Approve Ads </span>  </li></Link>
-                    <Link className='link' to="/all-services" onClick={handle}><li> <DesignServicesIcon style={{fontSize: "17px"}}/> <span> All Services </span>  </li></Link>
+                    <Link className='link' to="/all-posts" onClick={handle}><li> <DesignServicesIcon style={{fontSize: "17px"}}/> <span> All Posts </span>  </li></Link>
+                    <Link className='link' to="/reports" onClick={handle}><li> <GoReport style={{fontSize: "17px"}}/> <span> Reports </span>  </li></Link>
                 </ul>
             </div>
             <div className='logout'>

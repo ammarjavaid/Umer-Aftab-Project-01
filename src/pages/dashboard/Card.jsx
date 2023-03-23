@@ -53,10 +53,10 @@ const Card = ({ image, location, name, onClick ,ban }) => {
                         <div className='ban' onClick={onClick}><button>  Ban</button></div>
                     } 
                     
-//                     {bans ? <div className='ban' onClick={check}> <input type="submit" value="Ban" onChange={(e) => setBans(e.target.value)}/> </div>
-//                         :
-//                         <div className='unban' onClick={checkOne}> <input type="submit" value="Unban" onChange={(e) => setBans(e.target.value)}/> </div>
-//                     }
+{/* //                     {bans ? <div className='ban' onClick={check}> <input type="submit" value="Ban" onChange={(e) => setBans(e.target.value)}/> </div> */}
+{/* //                         : */}
+{/* //                         <div className='unban' onClick={checkOne}> <input type="submit" value="Unban" onChange={(e) => setBans(e.target.value)}/> </div> */}
+{/* //                     } */}
 
                 </div>
             </div>

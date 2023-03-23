@@ -42,7 +42,7 @@ const FAQ = () => {
           <div className='approve'>
             {
               myAds.map((item) => (
-                <AdCard img={item.AdGraphicLink} type={item.MediaType} title={item.Adtype} price={item.ads} id={item.UserID}/>
+                <AdCard img={item.AdGraphicLink} mediaType={item.MediaType} type={item.MediaType} title={item.Adtype} price={item.ads} id={item.UserID}/>
               ))
             }
           </div>

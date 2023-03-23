@@ -2,27 +2,33 @@ import React from 'react'
 import { deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../../Firebase';
 
-const AdCard = ({ img, title, type, price, id }) => {
+const AdCard = ({ img, title, mediaType, price, id }) => {
 
     function deletePost(id) {
         const docRef = doc(db, 'Ads', id)
         deleteDoc(docRef)
-          .then(() => {
-            console.log('Document Deleated')
-          }).catch((error) => {
-            console.log(error.message)
-          })
-      }
+            .then(() => {
+                console.log('Document Deleated')
+            }).catch((error) => {
+                console.log(error.message)
+            })
+    }
 
 
-  return (
-    <>
-        <div className="card" style={{ width: "18rem" }}>
+    return (
+        <>
+            <div className="card" style={{ width: "18rem" }}>
                 {/* <img src={img} className="card-img-top" alt="..." /> */}
                 <div className="card-body">
-                <video controls >
-                  <source src={img} type="video/mp4" />
-                </video>
+                    {mediaType === "Videos" ? (
+                        <>
+                            <video controls >
+                                <source src={img} type="video/mp4" />
+                            </video>
+                        </>
+                    ) : (
+                        <img src={img} className="card-img-top" alt="..." />
+                    )}
                     <h2 className="card-title">{title}</h2>
                     {/* <p className="card-text">{desc}</p> */}
                     {/* <div className='butns'>
@@ -42,9 +48,15 @@ const AdCard = ({ img, title, type, price, id }) => {
                                     <h4 className="modal-title"> Shoes </h4>
                                 </div> */}
                                 <div className="modal-body">
-                                <video controls >
-                                <source src={img} type="video/mp4" />
-                                </video>
+                                    {mediaType === "Videos" ? (
+                                        <>
+                                            <video controls >
+                                                <source src={img} type="video/mp4" />
+                                            </video>
+                                        </>
+                                    ) : (
+                                        <img src={img} className="card-img-top" alt="..." />
+                                    )}
                                     <h3> {title} </h3>
                                     {/* <p>{desc}</p> */}
                                     <p> {price} </p>
@@ -61,9 +73,9 @@ const AdCard = ({ img, title, type, price, id }) => {
                         </div>
                     </div>
                 </div>
-        </div>
-    </>
-  )
+            </div>
+        </>
+    )
 }
 
 export default AdCard

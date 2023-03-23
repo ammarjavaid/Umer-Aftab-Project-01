@@ -5,14 +5,6 @@ import { db } from '../../Firebase';
 const ServiceCard = ({ img, title, desc, price, id }) => {
 
     const [modalData, setModalData] = useState({ title, desc, price, id })
-    // const [model, setModel] = useState(false);
-    // const [temdata, setTemdata] = useState([]);
-
-    // const getData = (img, title, desc) => {
-    //     let temdata = [img, title, desc];
-    //     setTemdata(item => [1, ...temdata]);
-    //     return setModel(true)
-    // }
     const showDetails = (id) =>{
         setModalData({title, desc, id, price})
         console.log(modalData)
@@ -26,7 +18,7 @@ const ServiceCard = ({ img, title, desc, price, id }) => {
           }).catch((error) => {
             console.log(error.message)
           })
-      }
+    }
 
     return (
         <>
@@ -54,7 +46,15 @@ const ServiceCard = ({ img, title, desc, price, id }) => {
                             <h4 className="modal-title"> {modalData.title} </h4>
                         </div>
                         <div className="modal-body">
-                            <img src={img} alt="" />
+                            <div className="main">
+                                <div className="left">
+                                    <img src={img} alt=""/>
+                                </div>
+                                <div className="right">
+                                    <img src={img} alt=""/>
+                                    <img src={img} alt=""/>
+                                </div>
+                            </div>
                             <p>{ modalData.desc }</p>
                             <p> ${modalData.price} </p>
                         </div>
@@ -65,28 +65,6 @@ const ServiceCard = ({ img, title, desc, price, id }) => {
 
                 </div>
             </div>
-
-
-            {/* {
-                model === true ? (
-                    <>
-                        <div className="modal show fade" style={{ display: "block", backgroundColor: "rgba(0,0,0,0.8)" }}>
-                            <div className="modal-dialog">
-                                <div className="modal-content">
-                                    <div className="modal-header">
-                                        <h5 className="modal-title">{temdata[2]}</h5>
-                                        <button type="button" className="btn-close"></button>
-                                    </div>
-                                    <div className="modal-body">
-                                        <img src={temdata[1]} alt='' />
-                                        <p>{temdata[3]}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </>
-                ) : ''
-            } */}
         </>
     )
 }

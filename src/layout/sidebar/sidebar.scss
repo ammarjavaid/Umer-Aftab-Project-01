@@ -39,12 +39,14 @@
     }
 
     .sidebarBottom {
-        // padding: 30px;
         padding-left: 10px;
         padding-top: 20px;
         padding-right: 10px;
 
         ul {
+            a{
+                text-decoration: none;
+            }
             li {
                 display: flex;
                 align-items: center;
