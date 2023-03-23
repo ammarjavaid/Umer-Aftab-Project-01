@@ -11,8 +11,8 @@ const AllServices = () => {
 
   const [open, setOpen] = useState(false)
   const [posts, setPosts] = useState([]);
-  const [name, setName] = useState('');
-  const [foundUsers, setFoundUsers] = useState(posts);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredData, setFilteredData] = useState(posts);
 
   const handle = () => {
     setOpen(!open)
@@ -32,21 +32,12 @@ const AllServices = () => {
     }
   }, []);
 
-  const filter = (e) => {
-    const keyword = e.target.value;
-
-    if (keyword !== '') {
-      const results = posts.filter((user) => {
-        return user.Title.toLowerCase().includes(keyword.toLowerCase())
-      });
-      setFoundUsers(results);
-    }
-    if(keyword === ''){
-      setFoundUsers(posts);
-    }
-
-    setName(keyword);
-  };
+  const handleSearch = event => {
+    const value = event.target.value;
+    setSearchTerm(value);
+    const filtered = posts.filter(item => item.Title.toLowerCase().includes(value.toLowerCase()));
+    setFilteredData(filtered);
+  }
 
 
   return (
@@ -56,11 +47,11 @@ const AllServices = () => {
         <Topbar open={open} setOpen={setOpen} handle={handle} />
         <div className='search__bar'>
               <SearchIcon className='rightIcon' />
-              <input type="text" placeholder='SEARCH' onChange={filter}/>
+              <input type="text" placeholder='SEARCH' value={searchTerm} onChange={handleSearch} />
           </div>
         <div className='Services' style={{ color: "#fff", padding: "40px" }}>
 
-          {foundUsers.map((item) => (
+          {filteredData.map((item) => (
               <ServiceCard img={item.images} title={item.Title} desc={item.Description} id={item.id} price={item.Price}/>
            ))}
         </div>
